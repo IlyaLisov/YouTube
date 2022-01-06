@@ -321,7 +321,7 @@ public class Task {
                             } else if(b1.getMonth() < b2.getMonth()) {
                                 return 1;
                             } else {
-                                return Integer.compare(b1.getMonth(), b2.getMonth());
+                                return Integer.compare(b1.getDay(), b2.getDay());
                             }
                         }
                     })
