@@ -1,0 +1,5 @@
+123;java;junior java developer;B
+201;javascript;middle javascript developer;A
+105;devops;senior devops;B
+200;csharp;middle csharp developer;A
+308;java;senior java developer;C

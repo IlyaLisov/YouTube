@@ -1,0 +1,3 @@
+10;Ivanov;Ivan
+20;Petrov;Petr
+30;Sidorov;Sidor
