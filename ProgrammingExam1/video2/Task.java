@@ -285,6 +285,7 @@ public class Task {
 
             List<Bug> result = bugs.stream()
                     .filter((b) -> bugsToQA.get(b.getId()) == qaId)
+                    .sorted(Comparator.comparingInt(b -> getBugIndexInBugsToQA(b, bugsToQA)))
                     .collect(Collectors.toList());
 
             if(result.size() > 0) {
@@ -297,6 +298,17 @@ public class Task {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int getBugIndexInBugsToQA(Bug bug, Map<Integer, Integer> bugsToQA) {
+        List<Integer> keys = new ArrayList<>(bugsToQA.keySet());
+
+        for(int i = 0; i < keys.size(); i++) {
+            if(keys.get(i) == bug.getId()) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public static void main(String[] args) {
