@@ -289,6 +289,7 @@ public class Task {
 
             List<Bug> result = bugs.stream()
                     .filter((b) -> bugsToQA.get(b.getId()) == qaId)
+                    .sorted(Comparator.comparingInt(b -> getBugIndexInBugsToQA(b, bugsToQA)))
                     .collect(Collectors.toList());
 
             if(result.size() > 0) {
@@ -301,6 +302,17 @@ public class Task {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int getBugIndexInBugsToQA(Bug bug, Map<Integer, Integer> bugsToQA) {
+        List<Integer> keys = new ArrayList<>(bugsToQA.keySet());
+
+        for(int i = 0; i < keys.size(); i++) {
+            if(keys.get(i) == bug.getId()) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public static void solve4(File output, File input, List<Bug> bugs, Map<Integer, Integer> bugsToQA) {
@@ -321,7 +333,11 @@ public class Task {
                             } else if(b1.getMonth() < b2.getMonth()) {
                                 return 1;
                             } else {
-                                return Integer.compare(b1.getDay(), b2.getDay());
+                                if(b1.getMonth() == b2.getMonth()) {
+                                    return Integer.compare(getBugIndexInBugsToQA(b1, bugsToQA), getBugIndexInBugsToQA(b2, bugsToQA));
+                                } else {
+                                    return Integer.compare(b1.getMonth(), b2.getMonth());
+                                }
                             }
                         }
                     })
