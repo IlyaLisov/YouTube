@@ -40,7 +40,9 @@ public class Task {
     public static int[][] getMatrixCopy(int[][] matrix) {
         int[][] result = matrix.clone();
 
-        System.arraycopy(matrix, 0, result, 0, matrix.length);
+        for(int i = 0; i < matrix.length; i++) {
+            result[i] = matrix[i].clone();
+        }
 
         return result;
     }
