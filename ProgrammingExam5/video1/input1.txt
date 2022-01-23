@@ -1,0 +1,3 @@
+311;Ivanov;Ivan;python
+210;Petrov;Petr;java
+121;Sidorov;Sidor;devops
