@@ -236,7 +236,7 @@ public class Task {
                 position.setId(Integer.parseInt(data[0]));
                 position.setProjectId(Integer.parseInt(data[1]));
                 position.setEmployeeId(Integer.parseInt(data[2]));
-                position.setWorkload(Integer.parseInt(data[2]));
+                position.setWorkload(Integer.parseInt(data[3]));
                 position.setBillingType(data[4]);
 
                 positions.add(position);
