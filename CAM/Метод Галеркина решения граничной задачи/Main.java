@@ -60,7 +60,7 @@ public class Main {
         if (x == interval[0]) {
             return (a(interval[0] + h, h) + bplus(interval[0], h) * h) / h + kappa0 + h / 2 * d(interval[0], h);
         } else if (x == interval[1]) {
-            return (a(interval[1], h) - bplus(interval[1], h) * h) / h + kappa1 + h / 2 * d(interval[1], h);
+            return (a(interval[1], h) - bminus(interval[1], h) * h) / h + kappa1 + h / 2 * d(interval[1], h);
         } else {
             return (a(x + h, h) + a(x, h)) / h / h + bplus(x, h) / h - bminus(x, h) / h + d(x, h);
         }
@@ -76,7 +76,7 @@ public class Main {
 
     public static double getA(double x, double h) {
         if (x == interval[1]) {
-            return (a(interval[1], h) - bplus(interval[1], h) * h) / h;
+            return (a(interval[1], h) - bminus(interval[1], h) * h) / h;
         } else {
             return a(x, h) / h / h - bminus(x, h) / h;
         }
